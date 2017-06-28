@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Img zip</title>
+</head>
+<body>
+	<input type="file" class="my-file" accept="image/gif,image/jpeg,image/png">
+	<div>
+		<p>zip</p>
+		<img class="zip" src="" alt="">
+	</div>
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="src/megapix-image.js"></script>
+	<script>
+		//创建图片与canvas
+		var img = new Image();
+		var canvas = document.createElement("canvas");
+		//var rawCanvas = document.getElementById("raw");
+
+		img.onload = function(){
+			
+			//计算原始图片的宽和高
+			var nw = img.naturalWidth, nh = img.naturalHeight;
+			var ctx = canvas.getContext('2d');
+			//设定canvas画布的宽
+			var rswidth = canvas.width = 750;
+			canvas.height = rswidth*nh/nw;
+			ctx.drawImage(img, 0, 0, nw, nh, 0, 0, rswidth, rswidth*nh/nw);
+			//将canvas转为base64编码
+			var src = canvas.toDataURL("image/jpeg",1);
+			$(".zip").attr("src",src);
+		}
+
+		$(".my-file").change(function(){
+			var file = this;
+			var reader = new FileReader();
+			reader.onload = function(evt){
+				img.src = evt.target.result;
+			}
+			reader.readAsDataURL(file.files[0]);
+		});
+	</script>	
+</body>
+</html>
