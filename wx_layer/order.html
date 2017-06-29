@@ -1,0 +1,251 @@
+<html lang="zh"><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>确认订单</title>
+    <!--mui css-->
+    <link rel="stylesheet" type="text/css" href="https://apps.bdimg.com/libs/mui/2.8.0/css/mui.min.css">
+	<!--<link rel="stylesheet" href="https://img.sumeils.com/libs/mui-3.6.1/css/mui.css" />-->
+	<!--<link rel="stylesheet" href="../dep/mui/css/mui.min.css" />-->
+	<!--mui.picker css-->
+	<link rel="stylesheet" href="https://img.sumeils.com/libs/mui/picker/css/mui.picker.min.css">
+	<!--common-->
+	<link rel="stylesheet" type="text/css" href="common.css">
+	<!--order-->
+	<link rel="stylesheet" type="text/css" href="order.css">
+</head>
+<body class="mui-ios mui-wechat mui-ios-9 mui-ios-9-1 mui-wechat-6 mui-wechat-6-3 mui-wechat-6-3-9">
+	<form id="myform" class="myform" action="/wechat/mall/pay.html">
+	
+	<div id="content">
+		<div class="scroller">
+			<div class="o-order">
+				<div class="o-item">
+						<div class="item-left">
+							<div class="item-img">
+								<a href="#"><img src="https://img.sumeils.com/uploads/201706/20170627111619715.jpg" alt="魔三角眉笔 1# 浅咖色"></a>
+							</div>
+							<div class="item-info">
+								<p>魔三角眉笔 1# 浅咖色</p>
+							</div>
+						</div>
+								
+						<div class="item-right">
+							<div class="item-price">￥<span>27</span></div>
+							<div class="item-count">
+								<span>×<span class="i-count">1</span></span>
+							</div>
+						</div>
+						
+						<input name="210" value="210" type="hidden">
+						<input name="210num" value="1" type="hidden">
+					</div>			</div>
+			
+			<div class="o-point">
+					<div>
+						<p>使用金币 : </p>
+						<p class="point">目前有100金币，最多可使用
+						0												金币</p>
+					</div>
+					
+					<div>
+						<div class="item-count">
+							<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="0">
+									<button class="mui-btn mui-numbox-btn-minus" type="button" disabled="">-</button>
+									<input name="gold" class="mui-numbox-input" type="number" value="0">
+									<button class="mui-btn mui-numbox-btn-plus" type="button" disabled="">+</button>
+								</div>
+													</div>
+					</div>
+				</div>
+				
+				<div class="o-price">
+					<div>
+						<p>商品总额 :</p>
+						<p>￥ <span class="total-price">27.00</span></p>
+					</div>
+					<div>
+						<p>扣减金额 :</p>
+						<p>￥ - <span class="discount">0.00</span></p>
+					</div>
+					<div>
+						<p>实付金额 :</p>
+						<p>￥ <span class="paid">27.00</span></p>
+					</div>
+				</div>
+						
+			<div class="o-rece">
+				<div class="o-address">
+						<span>请选择省、市、区</span>
+						<div class="city">北京市-东城区</div>
+						<span>请填写详细地址</span>
+						<input type="text" class="address-input">
+					</div>
+							</div>
+		</div>
+	</div>
+	<section id="s-footer">		
+		<div class="pay btn btn_sub">确认支付</div>	</section>
+	
+	</form>
+	
+	<!--加载器-->
+	<div id="loader" class="ui inverted dimmer">
+		<div class="ui loader"></div>
+	</div>
+	
+	<!--遮罩层-->
+	<div class="layer">
+		<div class="layer-bg"></div>
+		<div class="layer-icon">
+			<div class="loader-inner ball-spin-fade-loader">
+          		<div></div>
+          		<div></div>
+          		<div></div>
+          		<div></div>
+          		<div></div>
+          		<div></div>
+          		<div></div>
+          		<div></div>
+        	</div>
+		</div>
+	</div>
+	
+	<!--jquery-->
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<!--mui.js-->
+	<script type="text/javascript" src="https://img.sumeils.com/libs/mui/3.6.1/js/mui.min.js"></script>
+	<!--mui.picker.js-->
+	<script type="text/javascript" src="https://img.sumeils.com/libs/mui/picker/js/mui.picker.min.js"></script>
+	<!-- Validform -->
+    <script src="https://img.sumeils.com/libs/validform/Validform_v5.3.2_min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			paid();
+			
+    		//$(".registerform").Validform();  //就这一行代码！;
+    		var demo=$(".myform").Validform({
+    			tiptype:3,
+    			btnSubmit:".btn_sub", 
+    			showAllError:true,
+    			tipSweep:true,
+    			//label:".label",
+    			postonce:true,
+    			ajaxPost:true,
+    			beforeSubmit:function(curform){
+    				//在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+    				//这里明确return false的话表单将不会提交;	
+    				$(".layer").show();
+    			},
+        		callback:function(data){
+        			//$(".layer").hide();
+        			$(window).attr('location',data['payurl']);
+        		}
+    		});
+    		demo.tipmsg.r=" ";
+    		$('#Validform_msg').remove();
+		});
+		
+		//商品数量改变事件
+		$(".o-order").on("change",".o-item .mui-numbox-input",paid);
+		
+		//积分数量改变事件
+		$(".o-point").on("change",".item-count .mui-numbox-input",paid);
+		
+		//计算商品总额
+		function totalPrice(){
+			var $items = $(".o-item");
+			var price,count,total = 0;
+			$.each($items,function(i,item){
+				price = $(".item-price span",$(item)).html();
+				count = $(".item-count .i-count",$(item)).html();
+				total += price*count;
+			})
+			
+			$(".total-price").html(parseFloat(total).toFixed(2))
+			return total;
+		}
+		
+		//计算减扣金额
+		function discount(){
+			var count = $(".o-point .item-count input").val();
+			$(".discount").html(parseFloat(count).toFixed(2));
+			return count;
+		}
+		
+		//计算实付金额
+		function paid(){
+			var pay = totalPrice() - discount();
+			$(".paid").html(parseFloat(pay).toFixed(2))
+		}
+		
+		//门店选择下拉框绑定事件
+		$("#store").change(function(){
+			console.log($(this).val());
+			if($(this).val() === "0"){
+				$("#dialog-store").show();
+				showstores();
+			}else{
+				$("#dialog-store").hide();
+				$("#div-province").off();
+				$("#div-city").off();
+				$("#div-store").off();
+			}
+		});
+		
+		//选择门店弹出层
+        function showstores(){
+        	$("#div-province").html("<option value='0' class='op_default' disabled selected>省份</option>");
+        	$("#div-city").html("<option value='0' class='op_default' disabled selected>城市</option>");
+            $("#div-store").html("<option value='0' class='op_default' disabled selected>门店</option>");
+        	//初始化省份下拉列表
+    		$.getJSON("/promotion/index/getstore_from_redis_new.html", {"countryId":'中国'}, function(json, textStatus) {
+                var result = json;
+                var strHtml = "<option value='0' class='op_default' disabled selected>省份</option>";
+                for (var i = 0; i < result.length; i++) {
+                    strHtml += '<option value="' + result[i] + '" class="op_other">' + result[i] + '</option>';
+                }
+                $("#div-province").html(strHtml);
+            });
+        	
+    		// 省份change事件
+            $("#div-province").change(function () {
+                var provinceId = $("#div-province").val();
+                if (provinceId == 0) {
+                    $("#div-city").html("<option value='0' class='op_default' disabled selected>城市</option>");
+                    $("#div-store").html("<option value='0' class='op_default' disabled selected>门店</option>");
+                }
+                else {
+                	$.getJSON("/promotion/index/getstore_from_redis_new.html", { "provinceId": provinceId }, function(json, textStatus) {
+                        var result = json;
+                        var strHtml = "<option value='0' class='op_default' disabled selected>城市</option>";
+                        for (var i = 0; i < result.length; i++) {
+                            strHtml += '<option value="' + result[i] + '" class="op_other">' + result[i] + '</option>';
+                        }
+                        $("#div-city").html(strHtml);
+                        $("#div-store").html("<option value='0' class='op_default' disabled selected>门店</option>");
+                    });
+                }
+            });
+    		
+         	// 城市change事件
+            $("#div-city").change(function () {
+                var cityId = $("#div-city").val();
+                if (cityId == 0) {
+                    $("#div-store").html("<option value='0' class='op_default' disabled selected>门店</option>");
+                }
+                else {
+                	$.getJSON("/promotion/index/getstore_from_redis_new.html", { "cityId": cityId }, function(json, textStatus) {
+                        var result = json;
+                        var strHtml = "<option value='0' class='op_default' disabled selected>门店</option>";
+                        for (var i = 0; i < result.length; i++) {
+                            strHtml += '<option value="' + result[i]['storeid'] + '" class="op_other">' + result[i]['storename'] + '</option>';
+                        }
+                        $("#div-store").html(strHtml);
+                    });
+                }
+            });
+        }
+	</script><div class="mui-poppicker">		<div class="mui-poppicker-header">			<button class="mui-btn mui-poppicker-btn-cancel">取消</button>			<button class="mui-btn mui-btn-blue mui-poppicker-btn-ok">确定</button>			<div class="mui-poppicker-clear"></div>		</div>		<div class="mui-poppicker-body">		<div class="mui-picker" style="width: 33.3333%;">		<div class="mui-picker-inner">			<div class="mui-pciker-rule mui-pciker-rule-ft"></div>			<ul class="mui-pciker-list" style="transform: perspective(1000px) rotateY(0deg) rotateX(0deg);"><li class="highlight" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(0deg);">北京市</li><li class="visible" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-20deg);">天津市</li><li class="visible" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-40deg);">河北省</li><li class="visible" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-60deg);">山西省</li><li class="visible" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-80deg);">内蒙古</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-100deg);">辽宁省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-120deg);">吉林省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-140deg);">黑龙江省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-160deg);">上海市</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-180deg);">江苏省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-200deg);">浙江省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-220deg);">安徽省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-240deg);">福建省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-260deg);">江西省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-280deg);">山东省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-300deg);">河南省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-320deg);">湖北省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-340deg);">湖南省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-360deg);">广东省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-380deg);">广西壮族</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-400deg);">海南省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-420deg);">重庆</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-440deg);">四川省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-460deg);">贵州省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-480deg);">云南省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-500deg);">西藏</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-520deg);">陕西省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-540deg);">甘肃省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-560deg);">青海省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-580deg);">宁夏</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-600deg);">新疆</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-620deg);">台湾省</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-640deg);">香港</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-660deg);">澳门</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-680deg);">海外</li></ul>			<div class="mui-pciker-rule mui-pciker-rule-bg"></div>		</div>	</div><div class="mui-picker" style="width: 33.3333%;">		<div class="mui-picker-inner">			<div class="mui-pciker-rule mui-pciker-rule-ft"></div>			<ul class="mui-pciker-list" style="transform: perspective(1000px) rotateY(0deg) rotateX(0deg);"><li class="highlight" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(0deg);">北京市</li></ul>			<div class="mui-pciker-rule mui-pciker-rule-bg"></div>		</div>	</div><div class="mui-picker" style="width: 33.3333%;">		<div class="mui-picker-inner">			<div class="mui-pciker-rule mui-pciker-rule-ft"></div>			<ul class="mui-pciker-list" style="transform: perspective(1000px) rotateY(0deg) rotateX(0deg);"><li class="highlight" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(0deg);">东城区</li><li class="visible" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-20deg);">西城区</li><li class="visible" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-40deg);">崇文区</li><li class="visible" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-60deg);">宣武区</li><li class="visible" style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-80deg);">朝阳区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-100deg);">丰台区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-120deg);">石景山区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-140deg);">海淀区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-160deg);">门头沟区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-180deg);">房山区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-200deg);">通州区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-220deg);">顺义区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-240deg);">昌平区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-260deg);">大兴区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-280deg);">怀柔区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-300deg);">平谷区</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-320deg);">密云县</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-340deg);">延庆县</li><li style="transform-origin: center center -89.5px; transform: translateZ(89.5px) rotateX(-360deg);">其它区</li></ul>			<div class="mui-pciker-rule mui-pciker-rule-bg"></div>		</div>	</div></div>	</div>
+
+</body></html>
