@@ -40,6 +40,15 @@
     			top: 4.6rem;
     			left: 1.3rem;
 			}
+			
+			.next {
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				width: 120px;
+				height: 80px;
+				margin-left: -60px;
+			}
 		</style>
 	</head>
 <body>
@@ -50,9 +59,18 @@
 			  		<img src="img/index_0.jpg"  usemap="#611541" />
 					<a href="main.html" class="goto"></a>
 			  	</div>
-			    <div class="swiper-slide swiper-slide-next"><img src="img/index_1.jpg"></div>
-			    <div class="swiper-slide" ><img src="img/index_2.jpg"></div>
-			    <div class="swiper-slide" ><img src="img/index_3.jpg"></div>
+			    <div class="swiper-slide swiper-slide-next">
+			    	<img src="img/index_1.jpg">
+			    	<img class="next" src="img/next_0.gif" alt="" />
+			    </div>
+			    <div class="swiper-slide" >
+			    	<img src="img/index_2.jpg">
+			    	<img class="next" src="img/next_1.gif" alt="" />
+			    </div>
+			    <div class="swiper-slide" >
+			    	<img src="img/index_3.jpg">
+			    	<img class="next" src="img/next_2.gif" alt="" />
+			    </div>
 		  </div>
 		</div>
 	</div>
