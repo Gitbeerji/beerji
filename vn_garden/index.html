@@ -35,8 +35,10 @@
 			
 			.goto {
 				position: absolute;
-				width: 30%;
-				
+    			width: 1.2rem;
+    			height: .5rem;
+    			top: 4.6rem;
+    			left: 1.3rem;
 			}
 		</style>
 	</head>
@@ -45,10 +47,8 @@
 		<div class="swiper-container swiper-container-vertical" style="height: 480px;">
 		  	<div class="swiper-wrapper">
 			  	<div class="swiper-slide swiper-slide-active">
-			  		<img src="img/index_0.jpg" usemap="#Map">
-			  		<map name="Map">  
-					   <area shape="rect" href="page.html" coords="140,20,280,60">
-					</map>  
+			  		<img src="img/index_0.jpg"  usemap="#611541" />
+					<a href="main.html" class="goto"></a>
 			  	</div>
 			    <div class="swiper-slide swiper-slide-next"><img src="img/index_1.jpg"></div>
 			    <div class="swiper-slide" ><img src="img/index_2.jpg"></div>
@@ -56,6 +56,12 @@
 		  </div>
 		</div>
 	</div>
+	<script>
+		document.documentElement.style.fontSize = document.documentElement.clientWidth/3.75 + 'px';
+		window.onresize = function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth/3.75 + 'px';
+		}
+	</script>
 	<script type="text/javascript">
 		function fixPagesHeight() {
 			$('.swiper-slide,.swiper-container').css({
