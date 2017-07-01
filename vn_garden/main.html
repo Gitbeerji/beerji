@@ -6,24 +6,172 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<title>活动页面</title>
 	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.main {
+			position: relative;	
+		}
+		
+		img {
+			width: 100%;
+		}
+		
 		.game-bg {
 			position: fixed;
 			width: 100%;
 			top: 0;
 			left: 0;
 		}
-		.game-bg img {
+		
+		.life {
+			position: absolute;
+    		width: .45rem;
+    		height: .2rem;
+    		line-height: .2rem;
+    		top: 2.32rem;
+    		left: .18rem;
+    		text-align: center;
+    		font-weight: bold;
+    		color: #9D6438;
+    		font-size: .1rem;
+    		/*background: red;*/
+    		/*opacity: .5;*/
+		}
+		
+		.flower {
+			position:absolute;
+			width: 2rem;
+			height: 3rem;
+			top: 1.9rem;
+			left: 0.1rem;
+		}
+		
+		.kettle {
+			position: absolute;
+			width: 2.2rem;
+			height: 2rem;
+			top: 1.8rem;
+			left: 1.2rem;
+			z-index: 10;
+			background: url(img/kettle_0.gif);
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+		
+		.kettle.water {
+			width: 2.2rem;
+			height: 2rem;
+			top: 2.28rem;
+			left: 1.1rem;
+			z-index: 10;
+			background: url(img/kettle_1.png);
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+		
+		.modal {
+			box-sizing: border-box;
+			position: fixed;
+			width: 2.6rem;
+			height: 1.8rem;
+			top: 45%;
+			left: 50%;
+			margin-top: -0.8rem;
+			margin-left: -1.3rem;
+			border: solid 1px #8DBA86;
+			border-radius: 10px;
+			background: rgba(256,256,256,.8);
+			z-index: 15;
+			font-size: 0.16rem;
+			padding: 15px;
+			display: none;
+		}
+		.m-content {
+			height: 100%;
+			position: relative;
+		}
+		.modal p {
+			text-indent: 32px;
+			line-height: 0.3rem;
+			color: #515350;
+		}
+		.m-content div {
+			text-align: center;
+			position: absolute;
+			left: 0;
+			bottom: 0;
 			width: 100%;
+		}
+		.return-btn {
+			display: inline-block;
+			width: 100px;
+			height: 30px;
+			background: red;
+		}
+		
+		.m-succ {
+			height: 2.36rem;
+			margin-top: -1rem;
+		}
+		.g-rule {
+			position: fixed;
+			width: 100%;
+			top: 0;
+			left: 0;
+			z-index: 20;
+		}
+		.g-rule span {
+			position: absolute;
+			width: 100px;
+			height: 30px;
+			top: 5.2rem;
+			left: 50%;
+			margin-left: -50px;
+			background: red;
 		}
 	</style>
 </head>
 <body>
-	<div class="mian">
+	<div class="main">
 		<div class="game-bg">
 			<img src="img/gamebg.jpg" alt="" />
 		</div>
+		<div class="life">100</div>
+		<div class="flower">
+			<img src="img/flower_1.png" alt="" />
+		</div>
+		<div class="kettle">
+		</div>
+	</div>
+	
+	<div class="modal m-share">
+		<div class="m-content">
+			<p>怎么办，美丽的鲜花没有盛开，快邀请好友帮你浇水吧，可以加速花朵盛开哦!</p>
+			<div><span class="return-btn"></span></div>
+		</div>
+	</div>
+	
+	<div class="modal m-succ">
+		<div class="m-content">
+			<p>感谢您参与此次活动，收获蒲公英一枚！</p>
+			<p>生命力将折抵10元现金捐赠给薇妮幸福乡村图书馆，感谢您为山村孩子点亮希望。</p>
+			<div><span class="return-btn"></span></div>
+		</div>
+	</div>
+	
+	<div class="g-rule">
+		<img src="img/grule.jpg" alt="" />
+		<span></span>
 	</div>
 	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		document.documentElement.style.fontSize = document.documentElement.clientWidth/3.75 + 'px';
+		window.onresize = function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth/3.75 + 'px';
+		}
+	</script>
 	<script>
 		function fixPagesHeight() {
 			$('.sgame-bg').css({
