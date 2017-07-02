@@ -10,7 +10,8 @@
 			margin: 0;
 			padding: 0;
 		}
-		.main {
+		
+		.wrap {
 			position: relative;	
 		}
 		
@@ -75,14 +76,14 @@
 			box-sizing: border-box;
 			position: fixed;
 			width: 2.6rem;
-			height: 1.8rem;
+			height: 1.7rem;
 			top: 45%;
 			left: 50%;
 			margin-top: -0.8rem;
 			margin-left: -1.3rem;
 			border: solid 1px #8DBA86;
 			border-radius: 10px;
-			background: rgba(256,256,256,.8);
+			background: rgba(256,256,256,.9);
 			z-index: 15;
 			font-size: 0.16rem;
 			padding: 15px;
@@ -93,7 +94,7 @@
 			position: relative;
 		}
 		.modal p {
-			text-indent: 32px;
+			text-indent: 0.32rem;
 			line-height: 0.3rem;
 			color: #515350;
 		}
@@ -104,15 +105,16 @@
 			bottom: 0;
 			width: 100%;
 		}
+		
 		.return-btn {
 			display: inline-block;
-			width: 100px;
-			height: 30px;
+			width: 0.9rem;
+			height: 0.28rem;
 			background: red;
 		}
 		
 		.m-succ {
-			height: 2.36rem;
+			height: 2.3rem;
 			margin-top: -1rem;
 		}
 		.g-rule {
@@ -121,20 +123,65 @@
 			top: 0;
 			left: 0;
 			z-index: 20;
+			display: none;
 		}
 		.g-rule span {
 			position: absolute;
-			width: 100px;
-			height: 30px;
+			width: 1rem;
+			height: 0.28rem;
+			font-size: 0.16rem;
+			line-height: 0.28rem;
+			border: solid 2px #A88061;
+			color: #9C6545;
+			background: #FFFFFF;
+			border-radius: 5px;
+			text-align: center;
 			top: 5.2rem;
 			left: 50%;
 			margin-left: -50px;
-			background: red;
+		}
+		
+		.g-btn {
+			position: absolute;	
+			left: 0;
+			top: 5.32rem;
+			overflow: hidden;
+			width: 100%;
+		}
+		
+		.g-btn > div {
+			display: inline-block;
+			width: 1rem;
+			height: 0.28rem;
+			font-size: 0.16rem;
+			line-height: 0.28rem;
+			border: solid 2px #A88061;
+			color: #9C6545;
+			background: #FFFFFF;
+			border-radius: 5px;
+			text-align: center;
+		}
+		
+		.g-btn > div a {
+			text-decoration: none;
+			color: #9C6545;
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.rule-btn {
+			float: left;
+			margin-left: .4rem;
+		}
+		.conv-btn {
+			float: right;
+			margin-right: .4rem;
 		}
 	</style>
 </head>
 <body>
-	<div class="main">
+	<div class="wrap">
 		<div class="game-bg">
 			<img src="img/gamebg.jpg" alt="" />
 		</div>
@@ -146,14 +193,14 @@
 		</div>
 	</div>
 	
-	<div class="modal m-share">
+	<div class="modal m-share imsg">
 		<div class="m-content">
 			<p>怎么办，美丽的鲜花没有盛开，快邀请好友帮你浇水吧，可以加速花朵盛开哦!</p>
 			<div><span class="return-btn"></span></div>
 		</div>
 	</div>
 	
-	<div class="modal m-succ">
+	<div class="modal m-succ imsg">
 		<div class="m-content">
 			<p>感谢您参与此次活动，收获蒲公英一枚！</p>
 			<p>生命力将折抵10元现金捐赠给薇妮幸福乡村图书馆，感谢您为山村孩子点亮希望。</p>
@@ -161,9 +208,18 @@
 		</div>
 	</div>
 	
-	<div class="g-rule">
+	<div class="g-rule imsg">
 		<img src="img/grule.jpg" alt="" />
-		<span></span>
+		<span class="return-btn">返回游戏</span>
+	</div>
+	
+	<div class="g-btn">
+		<div class="rule-btn">游戏规则</div>
+		<div class="conv-btn">
+			<a href="convert.html">
+				我要兑换
+			</a>
+		</div>
 	</div>
 	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script>
@@ -184,6 +240,13 @@
 		})
 		
 		fixPagesHeight();
+		
+		$(".rule-btn").click(function(){
+			$(".g-rule").show();
+		});
+		$(".return-btn").click(function(){
+			$(".imsg").hide();
+		});
 	</script>
 </body>
 </html>
