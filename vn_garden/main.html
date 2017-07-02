@@ -19,10 +19,9 @@
 			width: 100%;
 		}
 		
-		.game-bg {
+		.bg {
 			position: absolute;
 			width: 100%;
-			height: 100vh;
 			top: 0;
 			left: 0;
 			overflow: hidden;
@@ -184,7 +183,7 @@
 </head>
 <body>
 	<div class="wrap">
-		<div class="game-bg">
+		<div class="bg">
 			<img src="img/gamebg.jpg" alt="" />
 		</div>
 		<div class="life">100</div>
@@ -232,7 +231,7 @@
 	</script>
 	<script>
 		function fixPagesHeight() {
-			$('.sgame-bg').css({
+			$('.game-bg').css({
 				height: $(window).height(),
 			})
 		}
