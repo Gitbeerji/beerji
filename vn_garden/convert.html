@@ -69,9 +69,14 @@
 			display: inline-block;
 			width: 0.18rem;
 			height: 0.18rem;
-			background: red;
+			background: url(img/check_0.png) no-repeat;
+			background-size: contain;
 			vertical-align: sub;
 			margin-left: 6px;
+		}
+		
+		.item.active .i-right span {
+			background-image: url(img/check_1.png);	
 		}
 		
 		.f-group{
@@ -134,8 +139,13 @@
 			display: inline-block;
 			width: 0.24rem;
 			height: 0.24rem;
-			/*background: red;*/
+			background: url(img/icon_1.gif) no-repeat;
+			background-size: contain;
 			border-left: solid 1px #C09F85;
+		}
+		
+		.f-group span.sel {
+			background-image: url(img/icon_0.gif)
 		}
 		
 		.tips {
@@ -229,7 +239,7 @@
 		<div class="content">
 			<div class="title">兑换列表</div>
 			<div class="item-list">
-				<div class="item">
+				<div class="item active">
 					<div>
 						<div class="i-left">花妍酵素面膜贴-失车菊</div>
 						<div class="i-right">兑换<span></span></div>
@@ -276,7 +286,7 @@
 							<select>
 								<option value="0">领取门店</option>
 							</select>
-							<span></span>
+							<span class="sel"></span>
 						</div>
 					</div>
 					<div class="f-group">
