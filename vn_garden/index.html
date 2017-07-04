@@ -25,7 +25,11 @@
 			img {
 				width: 100%;			
 			}
-
+			
+			.wrap {
+				overflow: hidden;	
+			}
+			
 			.goto {
 				position: absolute;
     			width: 1.2rem;
@@ -39,11 +43,9 @@
 		</style>
 	</head>
 <body>
-	<div style="max-width:640px; margin:0 auto;">
-		<div class="swiper-slide swiper-slide-active">
-			<img src="https://img.sumeils.com/uploads/201707/20170704141431942.jpg"  usemap="#611541" />
-			<a href="main.html" class="goto"></a>
-		</div>
+	<div class="wrap">
+		<img src="https://img.sumeils.com/uploads/201707/20170704141431942.jpg"  usemap="#611541" />
+		<a href="main.html" class="goto"></a>
 	</div>
 	<script>
 		document.documentElement.style.fontSize = document.documentElement.clientWidth/3.75 + 'px';
@@ -53,11 +55,7 @@
 	</script>
 	<script type="text/javascript">
 		function fixPagesHeight() {
-			$('.swiper-slide,.swiper-container').css({
-				height: $(window).height(),
-			});
-			
-			$('.bg').css({
+			$('.wrap').css({
 				height: $(window).height(),
 			});
 		}
