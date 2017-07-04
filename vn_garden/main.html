@@ -29,48 +29,53 @@
 		
 		.life {
 			position: absolute;
-    		width: .45rem;
-    		height: .2rem;
+    		width: .55rem;
+    		height: .55rem;
+    		padding-top: 0.12rem ;
     		line-height: .2rem;
-    		top: 2.32rem;
-    		left: .18rem;
+    		top: 2.1rem;
+    		left: .24rem;
     		text-align: center;
     		font-weight: bold;
     		color: #9D6438;
     		font-size: .1rem;
+    		background: url(img/point_bg.png) no-repeat;
+    		background-size: contain;
     		/*background: red;*/
     		/*opacity: .5;*/
 		}
 		
 		.flower {
 			position:absolute;
-			width: 2rem;
-			height: 3rem;
-			top: 1.9rem;
-			left: 0.1rem;
+			width: 1.5rem;
+			height: 2.18rem;
+			top: 2.22rem;
+			left: 0.4rem;
 		}
 		
 		.kettle {
 			position: absolute;
-			width: 2.2rem;
-			height: 2rem;
-			top: 1.8rem;
-			left: 1.2rem;
+			width: 1.8rem;
+			height: 1.2rem;
+			top: 2.4rem;
+			left: 1.65rem;
 			z-index: 10;
 			background: url(img/kettle_0.gif);
 			background-size: contain;
 			background-repeat: no-repeat;
+			transform: rotate(-15deg);
 		}
 		
 		.kettle.water {
-			width: 2.2rem;
-			height: 2rem;
-			top: 2.28rem;
-			left: 1.1rem;
+			width: 2rem;
+			height: 1.3rem;
+			top: 2.3rem;
+			left: 1.28rem;
 			z-index: 10;
 			background: url(img/kettle_1.png);
 			background-size: contain;
 			background-repeat: no-repeat;
+			transform: rotate(-5deg);
 		}
 		
 		.modal {
@@ -109,15 +114,21 @@
 		
 		.return-btn {
 			display: inline-block;
-			width: 0.9rem;
-			height: 0.28rem;
-			background: red;
+			width: 0.91rem;
+			height: 0.32rem;
+			background: url(img/return_btn.png) no-repeat;
+			background-size: contain;
 		}
 		
 		.m-succ {
 			height: 2.3rem;
 			margin-top: -1rem;
 		}
+		
+		.m-share {
+			/*display: block;*/	
+		}
+		
 		.g-rule {
 			position: fixed;
 			width: 100%;
@@ -186,7 +197,10 @@
 		<div class="bg">
 			<img src="img/gamebg.jpg" alt="" />
 		</div>
-		<div class="life">100</div>
+		<div class="life">
+			<p>生命力</p>
+			<p class="l-point">0</p>
+		</div>
 		<div class="flower">
 			<img src="img/flower_1.png" alt="" />
 		</div>
@@ -194,14 +208,14 @@
 		</div>
 	</div>
 	
-	<div class="modal m-share imsg">
+	<div class="modal imsg m-share">
 		<div class="m-content">
 			<p>怎么办，美丽的鲜花没有盛开，快邀请好友帮你浇水吧，可以加速花朵盛开哦!</p>
 			<div><span class="return-btn"></span></div>
 		</div>
 	</div>
 	
-	<div class="modal m-succ imsg">
+	<div class="modal imsg m-succ">
 		<div class="m-content">
 			<p>感谢您参与此次活动，收获蒲公英一枚！</p>
 			<p>生命力将折抵10元现金捐赠给薇妮幸福乡村图书馆，感谢您为山村孩子点亮希望。</p>
@@ -217,7 +231,7 @@
 	<div class="g-btn">
 		<div class="rule-btn">游戏规则</div>
 		<div class="conv-btn">
-			<a href="convert.html">
+			<a href="convert.html" id="exc-btn"> 
 				我要兑换
 			</a>
 		</div>
@@ -242,12 +256,14 @@
 		
 		fixPagesHeight();
 		
+		//弹出框返回游戏事件绑定
 		$(".rule-btn").click(function(){
 			$(".g-rule").show();
 		});
 		$(".return-btn").click(function(){
 			$(".imsg").hide();
 		});
+		
 	</script>
 </body>
 </html>

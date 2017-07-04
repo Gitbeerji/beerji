@@ -4,9 +4,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>graden</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<link rel="stylesheet" href="dep/swiper/css/swiper.min.css">
+		<link rel="stylesheet" href="https://img.sumeils.com/libs/swiper/swiper-3.3.1.min.css">
 		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script src="dep/swiper/js/swiper.js"></script>
+		<script src="https://img.sumeils.com/libs/swiper/swiper-3.3.1.min.js"></script>
 		<style>
 			* {
 				margin: 0;
@@ -36,19 +36,22 @@
 			.goto {
 				position: absolute;
     			width: 1.2rem;
-    			height: .5rem;
-    			top: 4.6rem;
-    			left: 1.3rem;
+    			height: 0.33rem;
+    			top: 4.55rem;
+    			left: 50%;
+    			margin-left: -0.6rem;
+    			background: url(img/enter_btn.png) no-repeat;
+    			background-size: contain;
 			}
 			
 			.next {
 				position: absolute;
 				bottom: 0;
 				left: 50%;
-				width: 120px;
-				height: 80px;
-				margin-left: -60px;
-				opacity: .5;
+				width: 80px;
+				height: 65px;
+				margin-left: -40px;
+				opacity: .8;
 			}
 		</style>
 	</head>
@@ -59,6 +62,7 @@
 			  	<div class="swiper-slide swiper-slide-active">
 			  		<img src="img/index_0.jpg"  usemap="#611541" />
 					<a href="main.html" class="goto"></a>
+					<img class="next" src="img/next_2.gif" alt="" />
 			  	</div>
 			    <div class="swiper-slide swiper-slide-next">
 			    	<img src="img/index_1.jpg">
@@ -70,7 +74,6 @@
 			    </div>
 			    <div class="swiper-slide" >
 			    	<img src="img/index_3.jpg">
-			    	<img class="next" src="img/next_2.gif" alt="" />
 			    </div>
 		  </div>
 		</div>

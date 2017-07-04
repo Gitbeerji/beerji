@@ -29,7 +29,7 @@
 		
 		.content {
 			position: absolute;
-			top: 1.22rem;
+			top: 1.2rem;
 			width: 100%;
 			font-size: 16px;
 			color: #A68162;
@@ -39,7 +39,7 @@
 			text-align: center;	
 			font-size: 0.16rem;
 			font-weight: 600;
-			margin-bottom: 0.1rem;
+			margin-bottom: 0.05rem;
 		}
 		
 		.item-list {
@@ -55,7 +55,7 @@
 			width: 70%;
 			float: left;
 			text-align: center;
-			line-height: 0.18rem;
+			line-height: 0.2rem;
 		}
 		
 		.item .i-right {
@@ -65,7 +65,7 @@
 			line-height: 0.18rem;
 		}
 		
-		.i-right span {
+		.i-right span.sel-icon {
 			display: inline-block;
 			width: 0.18rem;
 			height: 0.18rem;
@@ -75,7 +75,7 @@
 			margin-left: 6px;
 		}
 		
-		.item.active .i-right span {
+		.item.active .i-right span.sel-icon {
 			background-image: url(img/check_1.png);	
 		}
 		
@@ -139,13 +139,13 @@
 			display: inline-block;
 			width: 0.24rem;
 			height: 0.24rem;
-			background: url(img/icon_1.gif) no-repeat;
+			background: url(img/icon_1.png) no-repeat;
 			background-size: contain;
 			border-left: solid 1px #C09F85;
 		}
 		
 		.f-group span.sel {
-			background-image: url(img/icon_0.gif)
+			background-image: url(img/icon_0.png)
 		}
 		
 		.tips {
@@ -242,28 +242,31 @@
 				<div class="item active">
 					<div>
 						<div class="i-left">花妍酵素面膜贴-失车菊</div>
-						<div class="i-right">兑换<span></span></div>
+						<div class="i-right">兑换<span class="sel-icon"></span></div>
 					</div>
 					<div>
 						<div class="i-left">(活力水润)</div>
+						<div class="i-right">还剩 <span>88</span> 个</div>
 					</div>
 				</div>
 				<div class="item">
 					<div>
 						<div class="i-left">花妍酵素面膜贴-鸢尾花</div>
-						<div class="i-right">兑换<span></span></div>
+						<div class="i-right">兑换<span class="sel-icon"></span></div>
 					</div>
 					<div>
 						<div class="i-left">(紧致新生)</div>
+						<div class="i-right">还剩 <span>66</span>个 </div>
 					</div>
 				</div>
 				<div class="item">
 				<div>
 					<div class="i-left">花妍酵素面膜贴-木兰花</div>
-					<div class="i-right">兑换<span></span></div>
+					<div class="i-right">兑换<span class="sel-icon"></span></div>
 				</div>
 				<div>
 					<div class="i-left">(焕彩亮肤)</div>
+					<div class="i-right">还剩 <span>99</span> 个</div>
 				</div>
 			</div>
 			</div>
@@ -303,7 +306,7 @@
 				</div>
 			</div>
 			<div class="submit-btn">
-				<div>确认提交</div>
+				<div onclick="location.href = 'share.html'">确认提交</div>
 			</div>
 		</div>
 	</div>
@@ -342,6 +345,12 @@
 		})
 		
 		fixPagesHeight();
+		
+		//兑换选定事件
+		$(".item-list").on("click",".item",function(){
+			$(".item-list .item").removeClass("active");
+			$(this).addClass("active");
+		});
 	</script>
 </body>
 </html>
