@@ -25,71 +25,24 @@
 			img {
 				width: 100%;			
 			}
-		
-			.swiper-wrapper {
-				-webkit-perspective: 1200px;
-			    -moz-perspective: 1200px;
-			    -ms-perspective: 1200px;
-			    perspective: 1200px;
-			}
-			.swiper-slide {
-			   	position: relative;
-			   	-webkit-transform-style: preserve-3d;
-			   	-moz-transform-style: preserve-3d;
-			   	-ms-transform-style: preserve-3d;
-			    transform-style: preserve-3d;
-			   	background-size:100% auto;
-			   	overflow:hidden;
-			   	text-align:center;
-			   	line-height:300px;
-			}
-			.swiper-slide img{
-				max-width:100%;
-			}
-			
+
 			.goto {
 				position: absolute;
     			width: 1.2rem;
     			height: 0.33rem;
-    			top: 4.55rem;
+    			top: 4.64rem;
     			left: 50%;
     			margin-left: -0.6rem;
     			background: url(img/enter_btn.png) no-repeat;
     			background-size: contain;
 			}
-			
-			.next {
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				width: 80px;
-				height: 65px;
-				margin-left: -40px;
-				opacity: .8;
-			}
 		</style>
 	</head>
 <body>
 	<div style="max-width:640px; margin:0 auto;">
-		<div class="swiper-container swiper-container-vertical" style="height: 480px;">
-		  	<div class="swiper-wrapper">
-			  	<div class="swiper-slide swiper-slide-active">
-			  		<img src="https://img.sumeils.com/uploads/201707/20170704141431942.jpg"  usemap="#611541" />
-					<a href="main.html" class="goto"></a>
-					<img class="next" src="img/next_2.gif" alt="" />
-			  	</div>
-			    <div class="swiper-slide swiper-slide-next">
-			    	<img src="https://img.sumeils.com/uploads/201707/20170704141454918.jpg">
-			    	<img class="next" src="img/next_0.gif" alt="" />
-			    </div>
-			    <div class="swiper-slide" >
-			    	<img src="https://img.sumeils.com/uploads/201707/20170704141510109.jpg">
-			    	<img class="next" src="img/next_1.gif" alt="" />
-			    </div>
-			    <div class="swiper-slide" >
-			    	<img src="https://img.sumeils.com/uploads/201707/20170704141522851.jpg">
-			    </div>
-		  </div>
+		<div class="swiper-slide swiper-slide-active">
+			<img src="https://img.sumeils.com/uploads/201707/20170704141431942.jpg"  usemap="#611541" />
+			<a href="main.html" class="goto"></a>
 		</div>
 	</div>
 	<script>
@@ -102,7 +55,11 @@
 		function fixPagesHeight() {
 			$('.swiper-slide,.swiper-container').css({
 				height: $(window).height(),
-			})
+			});
+			
+			$('.bg').css({
+				height: $(window).height(),
+			});
 		}
 		
 		$(window).on('resize', function() {
@@ -110,67 +67,6 @@
 		})
 		
 		fixPagesHeight();
-	
-	
-		var mySwiper = new Swiper('.swiper-container', {
-		    direction: 'vertical',
-			mousewheelControl: true,
-			watchSlidesProgress: true,
-			onInit: function(swiper) {
-				swiper.myactive = 0;
-				
-			},
-			onProgress: function(swiper) {
-				for (var i = 0; i < swiper.slides.length; i++) {
-					var slide = swiper.slides[i];
-					var progress = slide.progress;
-					var translate, boxShadow;
-		
-					translate = progress * swiper.height * 0.8;
-					scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
-					boxShadowOpacity = 0;
-		
-					slide.style.boxShadow = '0px 0px 10px rgba(0,0,0,' + boxShadowOpacity + ')';
-		
-					if (i == swiper.myactive) {
-						es = slide.style;
-						es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,' + (translate) + 'px,0) scale(' + scale + ')';
-						es.zIndex=0;
-		
-		
-					}else{
-						es = slide.style;
-						es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform ='';
-						es.zIndex=1;
-						
-					}
-		
-				}
-		
-			},
-	
-			onTransitionEnd: function(swiper, speed) {
-				for (var i = 0; i < swiper.slides.length; i++) {
-				//	es = swiper.slides[i].style;
-				//	es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = '';
-		
-				//	swiper.slides[i].style.zIndex = Math.abs(swiper.slides[i].progress);
-		
-					
-				}
-		
-				swiper.myactive = swiper.activeIndex;
-		
-			},
-			onSetTransition: function(swiper, speed) {
-				for (var i = 0; i < swiper.slides.length; i++) {
-					//if (i == swiper.myactive) {
-						es = swiper.slides[i].style;
-						es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
-					//}
-				}
-			}
-		});
 	</script>
 	</body>
 </html>
