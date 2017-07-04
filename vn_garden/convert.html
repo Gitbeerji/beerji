@@ -347,7 +347,7 @@
 		fixPagesHeight();
 		
 		//兑换选定事件
-		$(".item-list").on("click",".item",function(){
+		$(".item-list .item").click(function(){
 			$(".item-list .item").removeClass("active");
 			$(this).addClass("active");
 		});
