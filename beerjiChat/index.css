@@ -25,7 +25,7 @@ body {
 }
 
 .head {
-	position: absolute;
+	position: fixed;
 	height: 40px;
 	left: 0;
 	top: 0;
@@ -33,6 +33,8 @@ body {
 	text-align: center;
 	line-height: 40px;
 	font-size: 20px;
+	z-index: 2;
+	background: #FFFFFF;
 }
 
 .content {
@@ -43,6 +45,7 @@ body {
 }
 
 .content > div {
+	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
 	border-top: solid 1px #CECECE;
@@ -51,7 +54,7 @@ body {
 }
 
 .footer{
-	position: absolute;
+	position: fixed;
 	height: 40px;
 	left: 0;
 	bottom: 0;
@@ -154,6 +157,9 @@ body {
 }
 
 
+.chat-list {
+	overflow-y: auto;
+}
 .c-item {
 	overflow: hidden;
 	padding: 4px 5px;
