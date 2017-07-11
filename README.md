@@ -4,4 +4,4 @@
 [微信遮罩层测试](https://gitbeerji.github.io/beerji/wx_layer/order.html)     
 [浇花游戏](https://gitbeerji.github.io/beerji/vn_garden/index.html)      
 [活动页面](https://gitbeerji.github.io/beerji/vini_event/index.html)      
-[beerjiChat](https://gitbeerji.github.io/beerji/beerjichat/index.html)
+[beerjiChat](https://gitbeerji.github.io/beerji/beerjiChat/index.html)
