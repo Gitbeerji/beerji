@@ -11,6 +11,7 @@ var userRef = ref.child("user");
 
 var msgRef = ref.child("message");
 
+var countRef = ref.child("count");
 
 //执行
 $(function(){
@@ -66,7 +67,8 @@ function  login(){
 function addUser(name){
 	//向sync写入信息
 	userRef.push({
-		'name': name
+		'name': name,
+		'time': (new Date()).getTime()
 	}).then(function(){
 		//本地写入信息
 		localStorage.setItem('beerjiname',name);
@@ -86,6 +88,7 @@ function sendMsg(){
 		'username': beerji.name
 	}).then(function(){
 		$("#send-text").val("");
+		
 	});
 }
 
