@@ -16,6 +16,10 @@ img {
 	background: #FFFFFF;	
 }
 
+.mui-popup {
+	position: fixed;	
+}
+
 /*修改底部导航的样式*/
 .mui-bar-tab .mui-tab-item {
 	border-radius: 5px;
@@ -29,7 +33,7 @@ img {
 }
 
 .mui-popup-title {
-	display: none;	
+	/*display: none;*/	
 }
 
 .mui-popup-title+.mui-popup-text {
@@ -64,7 +68,7 @@ img {
 
 .m-bar-tab {
 	bottom: 0;
-    display: table;
+    display: flex;
     width: 100%;
     height: 50px;
     padding: 0;
@@ -75,9 +79,8 @@ img {
 }
 
 .m-bar-tab .m-tab-item {
-	display: table-cell;
+	flex-grow: 1;
     overflow: hidden;
-    width: 1%;
     height: 50px;
     text-align: center;
     vertical-align: middle;
@@ -86,10 +89,26 @@ img {
     color: #929292;
 }
 
+.m-bar-tab .m-tab-item.join-btn {
+	width: 50%;
+}
+
+.m-bar-tab .m-tab-item.join-btn .join-btn-text {
+	display: inline-block;
+	line-height: 50px;
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	color: #FFFFFF;
+	background: #F09BAD;
+	font-size: 16px;
+}
+
+
 .m-bar-tab .m-tab-item {
-	border-radius: 5px;
     color: #727171;
     font-size: 14px;
+    width: 25%;
 }
 
 .m-bar-tab~.mui-content {
@@ -98,7 +117,7 @@ img {
 
 .m-tab-item i {
 	display: inline-block;
-	top: 2px;
+	top: 6px;
     width: 24px;
     height: 24px;
     padding-top: 0;
@@ -114,7 +133,18 @@ img {
     font-size: 24px;
     position: relative;
     z-index: 20;
-	background: pink;
+}
+
+.join-btn-text i {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: url(https://img.sumeils.com/uploads/201707/20170710155120549.png) no-repeat;
+	background-size: contain;
+	margin-right: 6px;
+	position: relative;
+	top: 10px;
+	left: 0;
 }
 
 .m-tab-label {
@@ -129,6 +159,46 @@ img {
 .m-bar-tab .m-tab-item.m-active .m-tab-label{
 	color: #F09BAD;
     /*background: #FCCDE9;*/
+}
+
+.m-tab-item i.event_detail_icon {
+	background: url(https://img.sumeils.com/uploads/201707/20170709114825676.png) no-repeat;
+    background-size: cover;
+}
+
+.m-tab-item i.study_icon {
+	background: url(https://img.sumeils.com/uploads/201707/20170709114947215.png) no-repeat;
+    background-size: cover;
+}
+
+.m-tab-item i.buy_icon {
+	background: url(https://img.sumeils.com/uploads/201707/20170710135447495.png) no-repeat;
+    background-size: cover;
+}
+
+.m-tab-item i.mine_icon{
+	background: url(https://img.sumeils.com/uploads/201707/20170709115011199.png) no-repeat;
+    background-size: cover;
+}
+
+.m-tab-item.m-active i.event_detail_icon {
+	background: url(https://img.sumeils.com/uploads/201707/20170709115123131.png) no-repeat;
+    background-size: cover;
+}
+
+.m-tab-item.m-active i.study_icon {
+	background: url(https://img.sumeils.com/uploads/201707/20170709115135895.png) no-repeat;
+    background-size: cover;
+}
+
+.m-tab-item.m-active i.buy_icon {
+	background: url(https://img.sumeils.com/uploads/201707/20170709115146213.png) no-repeat;
+    background-size: cover;
+}
+
+.m-tab-item.m-active i.mine_icon{
+	background: url(https://img.sumeils.com/uploads/201707/20170709115156290.png) no-repeat;
+    background-size: cover;
 }
 
 .unlog .favor,
@@ -149,50 +219,58 @@ img {
 
 
 /*活动简介页面*/
-.event-bg {
+.event-bg > div {
 	line-height: 5px;
-	position: relative;	
 }
 
-.event-bg img {
-	width: 100%;
-}
-
-.event-btn {
-	position: absolute;
-	top: 5.8rem;
-	left: 0;
-	width: 100%;
-	text-align: center;
-}
-
-.event-btn  a {
-	display: inline-block;
-	width: 1.7rem;
-	height: 0.44rem;
+.btn-wrap {
+	position: relative;
 }
 
 .rule-btn {
-	background: url(../css/icon/rule_btn.png) no-repeat;
+	position: absolute;
+	top: 0.17rem;
+	right: 0.25rem;
+	width: 0.95rem;
+	height: 0.27rem;
+	background: url(https://img.sumeils.com/uploads/201707/20170712140728918.png) no-repeat;
 	background-size: contain;
-	margin-bottom: 0.18rem;	
 }
 
 .game-btn {
-	background: url(../css/icon/game_btn.png) no-repeat;
-	background-size: contain;	
+	position: absolute;
+	top: 0.54rem;
+	right: 0.05rem;
+	width: 0.85rem;
+	height: 0.25rem;
+	background: url(https://img.sumeils.com/uploads/201707/20170712140752764.png) no-repeat;
+	background-size: contain;
 }
-
-
 
 /*精彩内容页面*/
 .event-list {
-	padding: 0 10px;
+	/*padding: 0 10px;*/
 }
 
 .event-item {
 	overflow: hidden;
-	padding-top: 10px;
+	padding-top: 4px;
+	padding-bottom: 5px;
+	margin: 0 10px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.day-list .event-item:last-child {
+	border: 0;
+}
+
+.day-list .title {
+	color: #FFFFFF;
+	background: #F09BAD;	
+	padding-left: 18px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
 }
 
 .event-item > a {
@@ -219,12 +297,19 @@ img {
 }
 
 .e-text {
-	width: 2.2rem;
-	padding-left: 10px;
+    width: 2.2rem;
+    /* padding-left: 10px; */
+    font-size: 3.5vw;
+    padding: 0.06rem;
 }
 
+.e-title{
+    margin-top: 0.06rem;
+}
+
+
 .e-text > div {
-	line-height: 0.3rem;	
+	/* line-height: 0.3rem;	 */
 }
 
 .event-item > div.e-btn {
@@ -246,37 +331,38 @@ img {
 }
 
 .e-btn button {
+	width: 0.7rem;
 	font-size: 12px;
-	padding: 6px 4px ;
+	padding: 6px 0;
+	transition: none;
 }
 
 .e-btn button.active {
 	color: #fff;
-    background-color: #929292;	
+    background-color: #CCCCCC;	
 }
+
 
 /*我要参加页面*/
 .join {
-	padding: 20px;
 	height: 100%;
 	background: #FFFFFF;
-	padding-top: 5vh;
-}
-.join-text {
-	margin-bottom: 15vh;	
+	position: fixed;
+	width: 100%;
 }
 
-.join-text div{
-	padding: 0 10px;
-	font-size: 16px;
-	line-height: 24px;
-}
-
-.join .author {
-	padding-left: 15px;
+.join-bg {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 }
 
 .join-qcode {
+	position: absolute;
+	top: 2.25rem;
+	width: 100%;
 	text-align: center;
 }
 
@@ -303,7 +389,7 @@ img {
 	text-align: left;
 	font-size: 16px;
 	line-height: 30px;
-	font-weight: 400;	
+	font-weight: 600;	
 	border-bottom: solid 1px #EDEDED;
 }
 
@@ -313,38 +399,50 @@ img {
 	height: 24px;
 	margin-top: 3px;
 	margin-right: 6px;
-	background: url(../css/icon/medal_icon.png);
+	background: url(https://img.sumeils.com/uploads/201707/20170709134905345.png);
 	background-size: cover;
 }
 
+.my-page > div .title > i {
+	font-style: normal;
+	font-weight: 100;
+	float: right;
+	padding-right: 20px;
+	color: #575A63;	
+}
+
+.my-page > div .title > i span {
+	padding-left: 5px;
+}
+
 .my-page > div.my-coin .title > span {
-	background: url(../css/icon/point_icon.png);
+	background: url(https://img.sumeils.com/uploads/201707/20170709134919633.png);
 	background-size: cover;
 }
 
 .my-page > div.my-order .title > span {
-	background: url(../css/icon/order_icon.png);
+	background: url(https://img.sumeils.com/uploads/201707/20170709134938605.png);
 	background-size: cover;
 }
 
 .my-page > div.my-friend .title > span {
-	background: url(../css/icon/medal_icon.png);
+	background: url(https://img.sumeils.com/uploads/201707/20170710112614436.png);
 	background-size: cover;
 }
 
 .my-page > div.my-info {
-	padding-bottom: 0.18rem;	
+	padding-bottom: 0.18rem;
 }
 
 .my-info div {
 	float: left;
 	text-align: center;
-	font-size: 16px;
+	font-size: 6vw;
 }
 
 .user-icon {
-	width: 0.75rem;
-	height: 0.75rem;
+	width: 0.65rem;
+    height: 0.65rem;
 	text-align: center;
 }
 
@@ -358,7 +456,7 @@ img {
 
 .user-name {
 	width: 2.4rem;
-	height: 0.75rem;
+	height: 0.65rem;
 	padding-left: 0.2rem;
 	display: flex;
 	align-items: center;
@@ -378,15 +476,16 @@ img {
 .m-item {
 	padding-top: 8px;
 	overflow: hidden;
+    font-size: 4vw;
+    padding-left: 20px;
 }
 .m-item > div {
 	float: left;	
 }
 
 .m-icon {
-	width: 0.7rem;
-	height: 0.4rem;
-	padding-right: 0.3rem;
+	width: 0.4rem;
+    height: auto;
 }
 
 .m-icon img {
@@ -400,6 +499,8 @@ img {
     align-items: center;
     justify-content: center;
     padding-right: 0.3rem;
+	font-size: 4vw;
+    padding-left: 20px;
 }
 
 .m-ex {
@@ -407,29 +508,50 @@ img {
 	padding-left: 0.7rem;
 	font-size: 14px;
 }
+
+.m-detail {
+	display: inline-block;
+	padding-left: 40px;
+}
+
+.m-detail a {
+	padding-left: 0.4rem;
+	font-size: 4vw;
+}
 /*我的金币*/
 .coin-item {
-	padding: 10px 0;	
+	padding: 8px 0;	
+	border-bottom: solid 1px #EDEDED;
+    font-size: 4vw;
+}
+
+.coin-item:first-child {
+	font-weight: 600;
 }
 
 .coin-item > div {
-	display: inline-block;
-	text-align: center;
+    display: inline-block;
 }
 .c-text {
 	width: 1.8rem;
+	padding-left: 30px;
+    text-align: left;
 }
 .c-point {
 	width: 0.6rem;
+	padding-left: 5px;
+    text-align: center;
 }
 .c-action {
 	width: 0.9rem;
+    text-align: center;
 }
 .c-action > a {
+	font-weight: 100;
 	display: inline-block;
 	border: solid 1px #BBBBBB;
 	background: #FFFFFF;
-	color: #586376;
+	color: #575A63;
 	width: 70px;
 	height: 30px;
 	text-align: center;
@@ -439,25 +561,72 @@ img {
 	cursor: pointer;
 }
 
+.c-action > a.active {
+	color: #fff;
+    background-color: #CCCCCC;	
+}
+
 /*我的订单*/
 .order-item {
 	padding-top: 10px;
+	border-bottom: solid 1px #EDEDED;
+    font-size: 4vw;
+    padding-bottom: 10px;
+}
+
+.o-num {
+    padding: 5px 30px;
 }
 
 .o-info {
-	overflow: hidden;	
+	height: 32px;
+	line-height: 32px;	
+}
+
+.o-info > div {
+	display: inline-block;
 }
 
 .o-info > div:first-child {
-	float: left;
+	width: 1.8rem;
+    padding-left: 30px;
+    text-align: left;
 }
 
 .o-info > div:last-child {
-	float: right;
+	width: 0.9rem;
+    text-align: center;	
 }
 
 .o-status {
+	width: 0.6rem;
+    padding-left: 5px;
+    text-align: center;
 	color: green;	
+}
+
+.to-pay{
+	color: #DD524D;
+}
+
+.o-info  a {
+	font-weight: 100;
+	display: inline-block;
+	border: solid 1px #BBBBBB;
+	background: #FFFFFF;
+	color: #575A63;
+	width: 70px;
+	height: 30px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 28px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.o-info  a.active {
+	color: #fff;
+    background-color: #CCCCCC;	
 }
 
 .o-btn {
@@ -475,12 +644,12 @@ img {
 
 .f-item {
 	overflow: hidden;
-	padding-top: 8px;	
+    padding: 4px 15px 4px 30px;
+	border-bottom: solid 1px #EDEDED;
 }
 
 .f-item > div {
-	float: left;
-	height: 0.4rem;
+	height: 0.3rem;
 }
 
 .f-index {
@@ -488,12 +657,12 @@ img {
 	display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 0.3rem;
 }
 
 .f-icon {
-	width: 0.7rem;
-	padding-right: 0.3rem;
+	width: 0.4rem;
+    padding-right: 0.1rem;
+	float: left;
 }
 
 .f-icon img {
@@ -503,10 +672,31 @@ img {
 }
 
 .f-name {
-	width: 2rem;
+	width: 1.2rem;
 	display: flex;
     align-items: center;
     display: flex;
     align-items: center;
+    font-size: 3.6vw;
+    line-height: 3.6vw;
+	float: left;
 }
 
+.f-time{
+	display: flex;
+    align-items: center;
+    display: flex;
+    align-items: center;
+	font-size: 3.6vw;
+	float: right
+}
+
+.more-friend {
+	margin-top: 10px;
+	text-align: center;
+	color: #666;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	border: solid 1px #CCC;
+}
