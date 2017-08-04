@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>疯狂晒面膜</title>
+		<link rel="stylesheet" href="style/upload.css">
+	</head>
+	<body>
+		<div class="g-wrap">
+			<!--背景-->
+			<div class="g-bg">
+				<img src="img/11.jpg" alt="" />
+			</div>
+
+
+			<!--照片上传，感言填写-->
+			<div class="upload-wrap">
+				<div class="m-img-load">
+					<input style="display: none;" type="file" name="uimg" id="uimg" value="" accept="image/gif,image/png,image/jpeg"/>
+					<div class="img-container">
+						<label for="uimg" class="add-img-text">点击上传你的图片</label>
+					</div>
+					<div class="change-btn">
+						<label for="uimg" onclick="$('#uimg').val('');"></label>
+					</div>
+				</div>
+
+				<div class="m-text">
+					<input name="act" type="hidden" value="upload">
+					<input id="mask_imageurl" name="mask_imageurl" type="hidden" value="">
+					<div>我在<input class="note_when" name="note_when" type="text" />时敷面膜</div>
+					<div class="title">我的“膜”法语录:</div>
+					<div><input class="note_say" name="note_say" type="text" /></div>
+				</div>
+				<div class="m-btn">
+					<div><input  class="btn_sub" type="image" value="" src="img/14.png"></div>
+				</div>
+				
+			</div>
+			
+			<!--展示图片-->	
+			<div class="show-wrap">
+				<img class="qcode-img" src="img/code.jpg" alt="" />
+				<div class="show-canvas"><img src="" alt="" /></div>
+				<div></div>
+			</div>
+			<!-- loading toast -->
+			<div id="loadingToast" class="weui_loading_toast" style="display: none;">
+				<div class="weui_mask_transparent"></div>
+				<div class="weui_toast">
+					<div class="weui_loading">
+						<div class="weui_loading_leaf weui_loading_leaf_0"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_1"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_2"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_3"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_4"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_5"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_6"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_7"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_8"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_9"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_10"></div>
+						<div class="weui_loading_leaf weui_loading_leaf_11"></div>
+					</div>
+					<p class="weui_toast_content">上传中</p>
+				</div>
+			</div>
+		</div>
+		<script src="dep/jquery/jquery-3.2.1.js"></script>
+		<script>
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
+			window.onresize = function () {
+				document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
+				fixPagesHeight();
+			};
+    
+			function fixPagesHeight() {
+				$('.g-wrap').css({
+					height: $(window).height(),
+				});
+				$('.g-bg').css({
+					height: $(window).height(),
+				});
+			}
+			fixPagesHeight();
+		</script>
+		<script src="dep/img_zip/megapix-image.js"></script>
+		<script src="script/upload.js"></script>
+	</body>
+</html>

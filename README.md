@@ -5,3 +5,4 @@
 [浇花游戏](https://gitbeerji.github.io/beerji/vn_garden/index.html)      
 [活动页面](https://gitbeerji.github.io/beerji/vini_event/index.html)      
 [beerjiChat](https://gitbeerji.github.io/beerji/beerjiChat/index.html)
+[crazy_mask](https://gitbeerji.github.io/beerji/crazy_mask/index.html)
