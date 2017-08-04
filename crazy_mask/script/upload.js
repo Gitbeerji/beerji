@@ -49,9 +49,9 @@ function checkForm(){
 		return false;
 	};
 	//2.验证是否填写魔法语录
-	//if( !$(".note_when").val().trim() || !$(".note_say").val().trim()){
-	//	alert("请填写魔法语录");
-	//	return false;
+	if( !$(".note_when").val().trim() || !$(".note_say").val().trim()){
+		alert("请填写魔法语录");
+		return false;
 	//}
 	
 	return [$(".note_when").val().trim(), $(".note_say").val().trim()];
@@ -68,35 +68,42 @@ function rander(arr){
 	//设定canvas画布的宽
 	var rswidth = canvas.width = 1340;
 	var imgheight = rswidth*nh/nw;
-	canvas.height = imgheight + 600;
+	canvas.height = imgheight + 900;
 	
-	//绘制背景颜色
+	//绘制背景颜色-白色
 	ctx.fillStyle = "#FFFFFF";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	
-	//绘制背景颜色
+	//绘制背景颜色-蓝色
 	ctx.fillStyle = "#ACDEF7";
 	ctx.fillRect(50, 50, canvas.width - 100, canvas.height - 100);	
 	
+	ctx.fillStyle = "#FFFFFF";
+	ctx.font = "normal normal bolder 100px arial";
+	//绘制文字“薇妮全城疯狂敷面膜”
+	var text = ctx.measureText('薇妮全城疯狂敷面膜'); // TextMetrics object
+	//console.dir(text);
+  	ctx.fillText('薇妮全城疯狂敷面膜', (1340-text.width)/2, 240);
+  	
 	//绘制图片边框
-	ctx.fillStyle = "#D1601C"
-	ctx.fillRect(50, 50, canvas.width - 100, imgheight - 100);
+	ctx.fillStyle = "#D1601C";
+	ctx.fillRect(50, 350, canvas.width - 100, imgheight - 100);
 	
 	//绘制图片
-	ctx.drawImage(img, 0, 0, nw, nh, 60, 60, rswidth - 120, rswidth*nh/nw - 120);
+	ctx.drawImage(img, 0, 0, nw, nh, 60, 360, rswidth - 120, rswidth*nh/nw - 120);
 	
 	//绘制文字
 	ctx.fillStyle = "#F8BE03";
 	ctx.font = "normal normal bolder 80px arial";
 	var str = '我在'+arr[0]+'的时候敷面膜~';
-	drawText(str,ctx,imgheight-120);
+	drawText(str,ctx,imgheight + 300 - 120);
 	
 	//绘制文本
-  	ctx.fillText('“膜”法语录:', 500, imgheight + 70);
+  	ctx.fillText('“膜”法语录:', 520, imgheight + 300 + 70);
   	
   	
   	
-  	drawTextLong(arr[1],ctx,imgheight+160);
+  	drawTextLong(arr[1],ctx,imgheight + 300 + 160);
   	//ctx.fillText(arr[1], 560, imgheight+160);
 	load(ctx,canvas,imgheight);
 }
@@ -109,18 +116,20 @@ function drawText(str,ctx,height){
 
 function drawTextLong(str,ctx,height){
 	var arr = [];
-	var _str = 'xx';
-	var i = 0;
-	while( _str) {
-		_str = str.slice(i,i+12);
-		arr.push(_str);
-		i += 12; 
+	var temp = '';
+	for(var i = 0; i < str.length; i++){
+		 if( ctx.measureText(temp).width > 860 ){
+		 	arr.push(temp);
+		 	temp = '';
+		 }
+		 temp += str[i];
 	}
+	
+	arr.push(temp);
 	ctx.font = "normal normal bolder 60px arial";
 	
-	arr.pop(arr.length - 1);
 	arr.forEach(function(text,index){
-		ctx.fillText(text, 550, height+index*80);
+		ctx.fillText(text, 560, height+index*80+20);
 	});
 }
 
@@ -140,12 +149,12 @@ function load(ctx,canvas,imgheight){
 
 function drawCode(img,ctx,canvas,imgheight){
 	//绘制二维码图片
-	ctx.drawImage(img, 0, 0, 400, 400, 100, imgheight+10, 380, 380);
+	ctx.drawImage(img, 0, 0, 400, 400, 100, imgheight + 300 +10, 380, 380);
 	
 	//绘制二维码下的文字
 	ctx.fillStyle = "#FFFFFF";
 	ctx.font = "normal normal bolder 50px arial";
-	ctx.fillText('识别二维码参与活动', 70, imgheight+460);
+	ctx.fillText('识别二维码参与活动', 70, imgheight + 460 + 300);
 	
 	var strDataURI = canvas.toDataURL("image/jpeg");
 	//将canvas转为base64编码
