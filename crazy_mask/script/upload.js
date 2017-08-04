@@ -52,7 +52,7 @@ function checkForm(){
 	if( !$(".note_when").val().trim() || !$(".note_say").val().trim()){
 		alert("请填写魔法语录");
 		return false;
-	//}
+	}
 	
 	return [$(".note_when").val().trim(), $(".note_say").val().trim()];
 }
