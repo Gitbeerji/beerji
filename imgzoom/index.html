@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Photo Zoom</title>
+		<link rel="stylesheet" href="../photoswipe/photoswipe.css" />
+		<link rel="stylesheet" href="../photoswipe/default-skin/default-skin.css" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				outline: 0;
+				border: 0;
+				box-sizing: border-box;
+			}
+			
+			img {
+				width: 100%;
+			}
+			
+			body {
+				background: #EEE;	
+			}	
+					
+			.wrap {
+			}
+			
+			.g-head {
+				font-size: 20px;
+				line-height: 30px;
+				text-align: center;
+				padding: 10px 0;
+			}
+			
+			.wrap .img-title {
+				text-align: center;
+				font-size: 18px;
+				line-height: 20px;
+				color: #666;
+			}
+			
+			.wrap .content {
+				padding: 20px;
+				text-align: center;
+			}
+			
+			.g-img-one .img {
+				display: inline-block;
+				width: 60%;
+				vertical-align: top;
+			}
+			
+			.g-img-one .img > div {
+				width: 100%;
+			}
+			
+			.g-img-two .content > div {
+				overflow: hidden;
+				background: #FFF;	
+			}
+			
+			.g-img-two .img {
+				display: inline-block;
+				float: left;
+				width: 33.3%;
+				vertical-align: top;
+				padding: 3px;
+			}
+			
+			.g-img-two .img > div {
+				width: 100%;
+				position: relative;
+				padding-bottom: 100%;
+			}
+			
+			.g-img-two .img > div img {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				vertical-align: top;
+				z-index: 0;
+				top: 0;
+				left: 0;
+				object-fit: cover;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--主体内容-->
+		<div class="wrap">
+			<div class="g-head">Photo Zoom</div>
+			<div class="g-img-one">
+				<div class="img-title">ONE PICTURE</div>
+				<div class="content">
+					<div class="container">
+						<div class="img">
+							<div data-w='' data-h=''>
+								<img src="img/01.jpg" alt="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="g-img-two">
+				<div class="img-title">NINE PICTURE</div>
+				<div class="content">
+					<div class="container">
+						<div class="img">
+							<div>
+								<img src="img/02.jpg" alt="" />
+							</div>
+						</div>
+						<div class="img">
+							<div>
+								<img src="img/03.jpg" alt="" />
+							</div>
+						</div>
+						<div class="img">
+							<div>
+								<img src="img/04.jpg" alt="" />
+							</div>
+						</div>
+						<div class="img">
+							<div>
+								<img src="img/05.jpg" alt="" />
+							</div>
+						</div>
+						<div class="img">
+							<div>
+								<img src="img/06.jpg" alt="" />
+							</div>
+						</div>
+						<div class="img">
+							<div>
+								<img src="img/07.jpg" alt="" />
+							</div>
+						</div>
+						<div class="img">
+							<div>
+								<img src="img/08.jpg" alt="" />
+							</div>
+						</div>
+						<div class="img">
+							<div>
+								<img src="img/09.jpg" alt="" />
+							</div>
+						</div>
+						<div class="img">
+							<div>
+								<img src="img/10.jpg" alt="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- wrap end -->
+		
+		]
+		
+		<!--图片查看DOM结构-->
+		<!-- Root element of PhotoSwipe. Must have class pswp. -->
+		<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+		
+		    <!-- Background of PhotoSwipe. 
+		         It's a separate element as animating opacity is faster than rgba(). -->
+		    <div class="pswp__bg"></div>
+		
+		    <!-- Slides wrapper with overflow:hidden. -->
+		    <div class="pswp__scroll-wrap">
+		
+		        <!-- Container that holds slides. 
+		            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+		            Don't modify these 3 pswp__item elements, data is added later on. -->
+		        <div class="pswp__container">
+		            <div class="pswp__item"></div>
+		            <div class="pswp__item"></div>
+		            <div class="pswp__item"></div>
+		        </div>
+		
+		        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+		        <div class="pswp__ui pswp__ui--hidden">
+		
+		            <div class="pswp__top-bar">
+		
+		                <!--  Controls are self-explanatory. Order can be changed. -->
+		
+		                <div class="pswp__counter"></div>
+		
+		                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+		
+		                <button class="pswp__button pswp__button--share" title="Share"></button>
+		
+		                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+		
+		                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+		
+		                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+		                <!-- element will get class pswp__preloader--active when preloader is running -->
+		                <div class="pswp__preloader">
+		                    <div class="pswp__preloader__icn">
+		                      <div class="pswp__preloader__cut">
+		                        <div class="pswp__preloader__donut"></div>
+		                      </div>
+		                    </div>
+		                </div>
+		            </div>
+		
+		            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+		                <div class="pswp__share-tooltip"></div> 
+		            </div>
+		
+		            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+		            </button>
+		
+		            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+		            </button>
+		
+		            <div class="pswp__caption">
+		                <div class="pswp__caption__center"></div>
+		            </div>
+		
+		        </div>
+		
+		    </div>
+		
+		</div>
+		
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="../photoswipe/photoswipe.min.js"></script>
+		<script src="../photoswipe/photoswipe-ui-default.min.js"></script>
+		
+		<script>
+			
+			window.onload=function(){
+				auto_data_size();
+			};
+			
+			//计算图片的宽高
+			function auto_data_size(){
+				var $imgs= $("img");
+				$imgs.each(function() {
+					var imgs = new Image();
+					imgs.src=$(this).attr("src");
+					var w = imgs.width;
+					var h =imgs.height;
+					//console.log(w,h);
+					$(this).attr("h",h).attr("w",w);
+				})
+			};
+			
+			var openPhotoSwipe = function(items) {
+				if(!items) { return;}
+			    var pswpElement = $(".pswp")[0];
+			
+			    // build items array
+//			    var items = [
+//			        {
+//			            src: 'https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg',
+//			            w: 964,
+//			            h: 1024
+//			        },
+//			        {
+//			            src: 'https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg',
+//			            w: 1024,
+//			            h: 683
+//			        }
+//			    ];
+			    
+			    // define options (if needed)
+			    var options = {
+			        // history & focus options are disabled on CodePen        
+			        history: false,
+			        focus: false,
+			        arrowKeys: false,
+			        
+					fullscreenEl: false,
+					zoomEl: true,
+					shareEl: false,
+					
+			        showAnimationDuration: 0,
+			        hideAnimationDuration: 0
+			        
+			        
+			    };
+			    
+			    var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+			    gallery.init();
+			    return gallery;
+			};
+			
+			$("img").click(function(){
+				var arr = [];
+				var $parent = $(this).parents(".container");
+				var $imgs = $parent.find("img");
+				
+				//$.index() 两种相对的用法
+				var index =  $(this).parents(".img").index();
+				var item = $parent.find(".img").index($(this).parents(".img"));
+				console.log(index,item);
+				//console.log(imgs.length);
+				for(var i = 0; i < $imgs.length ; i++){
+					var obj = {
+						src: $($imgs[i]).attr("src"),
+						w: $($imgs[i]).attr("w"),
+						h: $($imgs[i]).attr("h")
+					};
+					
+					arr.push(obj);
+				}
+				
+				//console.dir(arr);
+				openPhotoSwipe(arr).goTo(index);
+			});
+		</script>
+	</body>
+</html>

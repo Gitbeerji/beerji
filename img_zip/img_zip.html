@@ -24,7 +24,7 @@
 			var nw = img.naturalWidth, nh = img.naturalHeight;
 			var ctx = canvas.getContext('2d');
 			//设定canvas画布的宽
-			var rswidth = canvas.width = 300;
+			var rswidth = canvas.width = 900;
 			canvas.height = rswidth*nh/nw;
 			ctx.drawImage(img, 0, 0, nw, nh, 0, 0, rswidth, rswidth*nh/nw);
 			//将canvas转为base64编码
