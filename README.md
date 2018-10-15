@@ -6,6 +6,6 @@
 
 * [beerjiChat](https://gitbeerji.github.io/littleDemo/beerjiChat/)
 
-* [上传图片前预览](https://gitbeerji.github.io/littleDemo/imgzoom/)
+* [上传图片前预览](https://gitbeerji.github.io/littleDemo/preview_image/)
 
-* [图片预览插件](https://gitbeerji.github.io/littleDemo/preview_image/)
+* [图片预览插件](https://gitbeerji.github.io/littleDemo/imgzoom/)
