@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>上传图片预览测试</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			.upload-wrap {
+				text-align: center;
+			}
+			#upload-img-btn {
+				display: inline-block;
+				background: #27BB6E;
+				color: #FFF;
+				padding: 4px 10px;
+			}
+			#show-upload-wrap {
+				padding: 5%;
+			}
+			img {
+				max-width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root">
+			<div id="show-upload-wrap"></div>
+			<div class="upload-wrap">
+				<label id="upload-img-btn" for="upload-input">点击上传图片</label>
+				<input id="upload-input" type="file" style="display: none;" accept="image/jpg, image/gif, image/jpeg, image/png">
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+		<script>
+			$(function(){
+				addEvent();	
+			});
+			function addEvent(){
+				$("#upload-input").change(function(){
+					if( this.files && this.files[0]){
+						showUploadImage(this.files[0])
+					}else{
+						alert('无有效图片')
+					}
+				});
+			}
+
+			function showUploadImage(fileObj){
+				var result = {};
+				if (window.createObjectURL != undefined) { // basic
+					result.url = window.createObjectURL(fileObj) ;
+				}else if (window.URL != undefined) { // mozilla(firefox)
+					result.url = window.URL.createObjectURL(fileObj) ;
+				}else if (window.webkitURL != undefined) { // webkit or chrome
+					result.url = window.webkitURL.createObjectURL(fileObj) ;
+				}else if( window.FileReader != undefined){
+					var reader=new FileReader();
+					reader.readAsDataURL(fileObj);
+					reader.onload=function(){
+						result.url = this.result;
+						var newImg = new Image();
+						newImg.onload = function(){
+							$("#show-upload-wrap").html(newImg);
+						};
+						newImg.src = result.url;
+						return;
+					}
+				}
+
+				var newImg = new Image();
+				newImg.onload = function(){
+					$("#show-upload-wrap").html(newImg);
+				};
+				newImg.src = result.url;
+			}
+		</script>
+	</body>
