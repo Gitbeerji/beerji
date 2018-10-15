@@ -1,8 +1,8 @@
 # beerji page
-* [音乐界面demo](https://gitbeerji.github.io/beerji/music_demo/music.html)   
+* [音乐界面demo]
 
-* [前端图片压缩](https://gitbeerji.github.io/beerji/img_zip/img_zip.html)   
+* [前端图片压缩]
 
-* [beerjiChat](https://gitbeerji.github.io/beerji/beerjiChat/index.html)
+* [beerjiChat]
 
-* [上传图片前预览](https://gitbeerji.github.io/beerji/preview_image/index.html)
+* [上传图片前预览]
